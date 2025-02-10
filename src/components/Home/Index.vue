@@ -7,6 +7,7 @@
         <Blogs/>
         <Resources />
         <FAQ/>
+        <Testimonials />
     </div>
 </template>
 
@@ -20,10 +21,11 @@ import FAQ from './FAQ.vue';
 import Hero from './Hero.vue';
 import Resources from './Resources.vue';
 import Service from './services/Service.vue';
+import Testimonials from './Testimonials.vue';
 
 export default {
     components:{
-        Hero, About, Service, CaseStudy, Blogs, Resources, FAQ
+        Hero, About, Service, CaseStudy, Blogs, Resources, FAQ, Testimonials
     }
 }
 </script>
