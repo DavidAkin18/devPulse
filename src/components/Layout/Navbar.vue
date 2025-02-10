@@ -6,10 +6,16 @@
 
       <!-- Desktop Navigation -->
       <ul class="hidden md:flex space-x-6">
-        <li><router-link to="/" class="hover:text-secondary">Home</router-link></li>
-        <li><router-link to="/about" class="hover:text-secondary">About</router-link></li>
-        <li><router-link to="/services" class="hover:text-secondary">Services</router-link></li>
-        <li><router-link to="/" class="hover:text-secondary">Contact</router-link></li>
+        <li>
+          <router-link to="/" 
+            class="hover:text-secondary   py-2 px-3 rounded-lg  font-bold">
+            {{homePage}}
+          </router-link>
+        </li>
+        <li><router-link to="/" class="hover:text-secondary font-bold ">Login</router-link></li>
+        <li><router-link to="/register" class="hover:bg-secondary  bg-accent py-2 px-3 rounded-lg  font-bold">Sign up</router-link></li>
+
+        
       </ul>
 
       <!-- Mobile Menu Icon -->
@@ -39,6 +45,7 @@
 </template>
 
 <script>
+
 export default {
   name: "Navbar",
   data() {
@@ -46,6 +53,17 @@ export default {
       isOpen: false,
     };
   },
+  props:{
+    homePage:{
+            type: String,
+            required: true,
+        },
+        beneficiaryData:{
+            type: Object,
+            required: false,
+            default: () => {}
+        }
+    },
   methods: {
     toggleMenu() {
       this.isOpen = !this.isOpen;

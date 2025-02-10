@@ -1,8 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router";
 import ComprehensiveService from "../components/Home/services/ComprehensiveService.vue";
-import Home from "../Views/Home.vue";
+
 import Register from "../components/auth/Register.vue"
 import Careers from "../components/Careers/Careers.vue";
+import Login from "../components/auth/Login.vue";
+import About from "../components/Home/About/About.vue";
+import Home from "../Views/Home.vue";
 
 
 const routes = [
@@ -15,6 +18,16 @@ const routes = [
     path:'/register',
     name:'register',
     component: Register
+  },
+  {
+    path:'/login',
+    name:'login',
+    component:Login
+  },
+  {
+    path:"/about",
+    name:'about',
+    component:About
   },
   {
     path:'/careers',

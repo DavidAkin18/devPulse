@@ -1,20 +1,18 @@
 <template>
   <div class="min-h-screen">
-    <Navbar/>
-    <div class="pt-20">
+    <!-- <Navbar/> -->
+    <div >
       <router-view></router-view>
     </div>
-    <Footer />
+    <!-- <Footer /> -->
   </div>
 </template>
 
 <script>
 import { RouterView } from 'vue-router';
-import Navbar from './layout/Navbar.vue';
-import Footer from './layout/Footer.vue';
+
 export default{
   components:{
-    Navbar, Footer
   }
 }
 </script>

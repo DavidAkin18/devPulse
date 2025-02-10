@@ -1,6 +1,6 @@
 <template>
     <div class="min-h-screen bg-gray-100 text-primary px-6 py-12">
-      <div class="max-w-4xl mx-auto">
+      <div class="max-w-6xl mx-auto">
         <!-- Hero Section -->
         <div class="text-center mb-12">
           <h1 class="text-5xl font-bold">Our <span class="text-secondary">Services</span></h1>

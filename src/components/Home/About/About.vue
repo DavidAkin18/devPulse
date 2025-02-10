@@ -1,6 +1,7 @@
 <template>
-    <div class="min-h-screen bg-gradient-to-b from-primary to-neutral px-6 py-12 text-white">
-      <div class="max-w-4xl mx-auto">
+  <Navbar :homePage = "homePage"/>
+    <div class="min-h-screen bg-gradient-to-b from-primary to-neutral px-6 py-12 pt-32 text-white">
+      <div class="max-w-6xl mx-auto">
         <!-- Hero Section -->
         <div class="text-center mb-16">
           <h1 class="text-5xl font-extrabold">
@@ -88,16 +89,24 @@
         </section>
       </div>
     </div>
+    <Footer/>
 </template>
 
 
 <script>
-import Chart from './Chart.vue';
+import Footer from "../../layout/Footer.vue"
+import Navbar from "../../layout/Navbar.vue";
+
 
   export default {
     name: "About",
     components:{
-        Chart
+      Navbar,Footer
+    },
+    data(){
+      return{
+        homePage:'Home'
+      }
     }
     
   };
