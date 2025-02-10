@@ -8,8 +8,8 @@
 
 <script>
 import Index from '../components/Home/Index.vue';
-import Footer from '../components/Layout/Footer.vue';
 import Navbar from '../components/Layout/Navbar.vue';
+import Footer from '../components/Layout/Footer.vue';
 
 export default {
     components:{

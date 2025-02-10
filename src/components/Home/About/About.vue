@@ -94,14 +94,14 @@
 
 
 <script>
-import Footer from "../../layout/Footer.vue"
-import Navbar from "../../layout/Navbar.vue";
+import Navbar from "../../Layout/Navbar.vue"
+import Footer from "../../Layout/Footer.vue"
 
 
   export default {
     name: "About",
     components:{
-      Navbar,Footer
+      Navbar, Footer
     },
     data(){
       return{
