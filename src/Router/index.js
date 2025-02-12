@@ -5,8 +5,9 @@ import Register from "../components/auth/Register.vue"
 import Careers from "../components/Careers/Careers.vue";
 import Login from "../components/auth/Login.vue";
 import About from "../components/Home/About/About.vue";
+import ForgetPassword from "../components/auth/ForgetPassword.vue"
 import Home from "../Views/Home.vue";
-
+// import Dashboard from "../components/Dashboard/Index.vue"
 
 const routes = [
   { 
@@ -25,6 +26,11 @@ const routes = [
     component:Login
   },
   {
+    path:'/forgot-password',
+    name:'forget-password',
+    component:ForgetPassword
+  },
+  {
     path:"/about",
     name:'about',
     component:About
@@ -35,7 +41,12 @@ const routes = [
     component: Careers
   },
   // {
-  //   path:'/services',
+  //   path:'/dashboard',
+  //   name:'dashboard',
+  //   component:Dashboard
+  // },
+  // {
+  //   path:'/main',
   //   name:'services',
   //   component:Services
   // },

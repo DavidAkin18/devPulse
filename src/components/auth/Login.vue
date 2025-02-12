@@ -104,7 +104,7 @@
         this.valid.password = this.user.secret.length > 0;
       },
       loginUser() {
-        console.log("Logging in user", this.user);
+        this.$router.push("/dashboard");
       },
       togglePasswordVisibility() {
         this.showPassword = !this.showPassword;

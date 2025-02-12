@@ -1,33 +1,47 @@
 <template>
-  <div class="relative w-full h-screen flex flex-col items-center justify-center text-center px-6">
+  <div 
+    class="relative w-full h-screen flex flex-col items-center justify-center text-center px-6 transition-colors duration-300"
+    :class="theme === 'dark' ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-900'"
+  >
     <!-- Background Image with Overlay -->
-    <div
+    <div 
       class="absolute inset-0 bg-cover bg-center bg-no-repeat"
       style="background-image: url('https://media.istockphoto.com/id/1413765605/photo/portrait-of-successful-african-american-business-woman.jpg?s=612x612&w=0&k=20&c=7SssKFIuj7EYG_c2A0ZIJUqZpd3hmjQW8P_TMF1WJ5I=');"
     ></div>
-    <div class="absolute inset-0 bg-primary opacity-70"></div> <!-- Dark overlay for contrast -->
+    
+    <!-- Dynamic Overlay (Darker in dark mode) -->
+    <div 
+      class="absolute inset-0 opacity-70 transition-opacity duration-300"
+      :class="theme === 'dark' ? 'bg-black' : 'bg-primary'"
+    ></div>
 
     <!-- Hero Content -->
-    <div class="relative z-10 text-white max-w-3xl">
+    <div class="relative z-10 max-w-3xl">
       <h1 class="text-5xl sm:text-6xl font-extrabold tracking-wide">
         Welcome to <span class="text-secondary">DevPulse</span>
       </h1>
 
       <!-- Overview -->
-      <p class="text-lg sm:text-xl mt-4 text-neutral space-x-4">
+      <p class="text-lg sm:text-xl mt-4 space-x-4">
         DevPulse provides cutting-edge web and mobile solutions designed
-        <span class=" text-accent text-xl font-extrabold  transition-all">{{ currentCountry }}</span>
+        <span class="text-accent text-xl font-extrabold transition-all">{{ currentCountry }}</span>
       </p>
 
       <!-- Call to Action Buttons -->
       <div class="mt-6 flex flex-wrap justify-center gap-4">
         <router-link to="/register">
-          <button class="bg-accent text-white px-6 py-3 rounded-md shadow-lg hover:bg-secondary transition-all">
+          <button 
+            class="px-6 py-3 rounded-md shadow-lg transition-all"
+            :class="theme === 'dark' ? 'bg-gray-800 text-white hover:bg-gray-600' : 'bg-accent text-white hover:bg-secondary'"
+          >
             Get Started
           </button>
         </router-link>
         <router-link to="/about">
-          <button class="text-accent bg-white px-6 py-3 rounded-lg font-bold shadow-lg hover:bg-neutral transition-all">
+          <button 
+            class="px-6 py-3 rounded-lg font-bold shadow-lg transition-all"
+            :class="theme === 'dark' ? 'bg-gray-900 text-gray-200 hover:bg-gray-500' : 'bg-white text-accent hover:bg-neutral'"
+          >
             Learn More
           </button>
         </router-link>
@@ -37,10 +51,14 @@
 </template>
 
 <script>
-
 export default {
   name: "Home",
-  
+  props: {
+    theme: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       countries: [' to Drive Innovation', ' for Efficiency', ' and Business Success'],
@@ -62,3 +80,7 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+/* Tailwind handles styling, no extra styles needed */
+</style>

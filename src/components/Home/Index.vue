@@ -1,13 +1,13 @@
 <template>
     <div>
-        <Hero/>
+        <Hero :theme="theme"/>
         <!-- <About/> -->
-        <Service/>
-        <CaseStudy/>
-        <Blogs/>
-        <Resources />
-        <FAQ/>
-        <Testimonials />
+        <Service :theme="theme"/>
+        <CaseStudy :theme="theme"/>
+        <Blogs :theme="theme"/>
+        <Resources :theme="theme" />
+        <FAQ :theme="theme"/>
+        <Testimonials :theme="theme" />
     </div>
 </template>
 
@@ -26,6 +26,12 @@ import Testimonials from './Testimonials.vue';
 export default {
     components:{
         Hero, About, Service, CaseStudy, Blogs, Resources, FAQ, Testimonials
+    },
+    props:{
+        theme:{
+            type:String,
+            require: true
+        }
     }
 }
 </script>

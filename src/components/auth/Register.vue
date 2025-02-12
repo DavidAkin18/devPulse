@@ -65,23 +65,27 @@
 
        
 
-        <div class="mt-4 relative">
+        <div class="mt-4 ">
           <label for="password" class="text-sm font-medium text-gray-700">
             Password <i class="ri-asterisk text-primary font-bold text-xs"></i>
           </label>
-          <input   
-            :type="showPassword ? 'text' : 'password'" 
-            id="password" 
-            class="input-field bg-[#EDEDF9]" 
-            placeholder="Enter your password"
-            v-model="user.password" required 
-            @input="touched.password = true"
-          />
-          <span @click="togglePasswordVisibility" 
-            class="absolute inset-y-0 right-3 top-6 flex items-center cursor-pointer text-gray-500 hover:text-gray-700">
-            <i v-if="showPassword" class="ri-eye-line text-xl"></i>
-            <i v-else class="ri-eye-off-line text-xl"></i>
-          </span>
+          <div class="relative">
+            <input   
+              :type="showPassword ? 'text' : 'password'" 
+              id="password" 
+              class="input-field bg-[#EDEDF9]" 
+              placeholder="Enter your password"
+              v-model="user.password" required 
+              @input="touched.password = true"
+            />
+            <span @click="togglePasswordVisibility" 
+              class="absolute inset-y-0 right-3 top-0 flex items-center 
+              cursor-pointer text-gray-500 hover:text-gray-700"
+            >
+              <i v-if="showPassword" class="ri-eye-line text-xl"></i>
+              <i v-else class="ri-eye-off-line text-xl"></i>
+            </span>
+          </div>
           <p v-if="touched.password && !hasUppercase" class="text-red-500 text-xs mt-1">
             Must include at least one uppercase letter.
           </p>
@@ -96,23 +100,25 @@
           </p>
         </div>
 
-        <div class="mt-4 relative">
+        <div class="mt-4 ">
           <label for="confirm_password" class="text-sm font-medium text-gray-700">
             Confirm Password <i class="ri-asterisk text-primary font-bold text-xs"></i>
           </label>
-          <input   
-            :type="showRepeatPassword ? 'text' : 'password'" 
-            id="confirm_password" 
-            class="input-field bg-[#EDEDF9]" 
-            placeholder="Confirm your password"
-            v-model="user.confirmPassword" required 
-            @input="touched.confirmPassword = true"
-          />
-          <span @click="toggleRepeatPasswordVisibility" 
-            class="absolute inset-y-0 right-3 top-6 flex items-center cursor-pointer text-gray-500 hover:text-gray-700">
-            <i v-if="showRepeatPassword" class="ri-eye-line text-xl"></i>
-            <i v-else class="ri-eye-off-line text-xl"></i>
-          </span>
+          <div class="relative">
+            <input   
+              :type="showRepeatPassword ? 'text' : 'password'" 
+              id="confirm_password" 
+              class="input-field bg-[#EDEDF9]" 
+              placeholder="Confirm your password"
+              v-model="user.confirmPassword" required 
+              @input="touched.confirmPassword = true"
+            />
+            <span @click="toggleRepeatPasswordVisibility" 
+              class="absolute inset-y-0 right-3 flex items-center cursor-pointer text-gray-500 hover:text-gray-700">
+              <i v-if="showRepeatPassword" class="ri-eye-line text-xl"></i>
+              <i v-else class="ri-eye-off-line text-xl"></i>
+            </span>
+          </div>
           <p v-if="touched.confirmPassword && user.password !== user.confirmPassword" 
             class="text-red-500 text-xs mt-1">
             Passwords do not match.
