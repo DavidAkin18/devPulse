@@ -3,7 +3,15 @@
     class="min-h-screen px-6 py-12 transition-colors duration-300"
     :class="theme === 'dark' ? 'bg-gray-800 text-gray-200' : 'bg-gray-100 text-primary'"
   >
-    <div class="max-w-6xl mx-auto">
+  <nav class="fixed top-0 left-64 z-50 right-0 h-16 hidden lg:flex justify-between items-center px-6 shadow-md"
+      :class="theme === 'dark' ? 'bg-gray-900 text-gray-300' : 'bg-white text-black'">
+      <h1 class="text-xl font-semibold">Comprehensive Services</h1>
+      <router-link to="/bio" class="flex items-center space-x-4">
+        <img  class="h-10 w-10 rounded-full object-cover" alt="User Avatar" />
+        <span class="text-sm font-semibold">{{ "hii" }}</span>
+      </router-link>
+    </nav>
+    <div class="max-w-6xl mx-auto pt-20">
       <!-- Hero Section -->
       <div class="text-center mb-12">
         <h1 class="text-5xl font-bold">
@@ -46,7 +54,7 @@
 
       <!-- Link to Comprehensive Service Offerings -->
       <div class="text-center mt-12">
-        <router-link to="/comprehensive-services">
+        <router-link to="/services/comprehensive-services">
           <button 
             class="px-6 py-3 rounded-lg shadow-md text-lg font-semibold transition"
             :class="theme === 'dark' ? 'bg-gray-900 text-gray-200 hover:bg-gray-500' : 'bg-secondary text-white hover:bg-opacity-80'"
@@ -55,11 +63,14 @@
           </button>
         </router-link>
       </div>
+      
     </div>
   </div>
 </template>
 
 <script>
+import { RouterView } from 'vue-router';
+
 export default {
   name: "Services",
   props: {

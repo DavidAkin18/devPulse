@@ -1,6 +1,7 @@
 <template>
   <div class="flex min-h-screen items-center justify-center bg-white">
-    <div class="py-12 p-4 pt-10 rounded-lg space-y-6 w-full max-w-xl">
+    <div class="py-12 px-6 pt-10 rounded-lg space-y-6 w-full max-w-xl ">
+      <!-- Header -->
       <div class="text-left">
         <h2 class="text-3xl font-extrabold text-primary">DevPulse</h2>
       </div>
@@ -9,16 +10,18 @@
         <p class="text-neutral mt-2">Fill in the following information to get started</p>
       </div>
 
-      <form class="mt-6">
+      <!-- Form -->
+      <form class="mt-6 space-y-4" @submit.prevent="handleSubmit">
         <div class="grid grid-cols-2 gap-4">
+          <!-- First Name -->
           <div>
-            <label for="first_name" class="text-sm font-medium text-gray-700">
-              First Name <i class="ri-asterisk text-primary font-bold text-xs"></i>
+            <label for="first_name" class="block text-sm font-medium text-gray-700">
+              First Name <span class="text-primary font-bold">*</span>
             </label>
             <input 
               type="text" 
               id="first_name" 
-              class="input-field bg-[#EDEDF9]" 
+              class="input-field"
               placeholder="What's your first name?"
               v-model="user.firstName" required 
               @input="touched.firstName = true"
@@ -28,14 +31,15 @@
             </p>
           </div>
 
+          <!-- Last Name -->
           <div>
-            <label for="last_name" class="text-sm font-medium text-gray-700">
-              Last Name <i class="ri-asterisk text-primary font-bold text-xs"></i>
+            <label for="last_name" class="block text-sm font-medium text-gray-700">
+              Last Name <span class="text-primary font-bold">*</span>
             </label>
             <input 
               type="text" 
               id="last_name" 
-              class="input-field bg-[#EDEDF9]" 
+              class="input-field" 
               placeholder="What's your last name?"
               v-model="user.lastName" required 
               @input="touched.lastName = true"
@@ -46,14 +50,15 @@
           </div>
         </div>
 
-        <div class="mt-4">
-          <label for="email" class="text-sm font-medium text-gray-700">
-            Email Address <i class="ri-asterisk text-primary font-bold text-xs"></i>
+        <!-- Email -->
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">
+            Email Address <span class="text-primary font-bold">*</span>
           </label>
           <input 
             type="email" 
             id="email" 
-            class="input-field bg-[#EDEDF9]" 
+            class="input-field" 
             placeholder="What's your email?"
             v-model="user.email" required 
             @input="touched.email = true"
@@ -63,17 +68,16 @@
           </p>
         </div>
 
-       
-
-        <div class="mt-4 ">
-          <label for="password" class="text-sm font-medium text-gray-700">
-            Password <i class="ri-asterisk text-primary font-bold text-xs"></i>
+        <!-- Password -->
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">
+            Password <span class="text-primary font-bold">*</span>
           </label>
           <div class="relative">
             <input   
               :type="showPassword ? 'text' : 'password'" 
               id="password" 
-              class="input-field bg-[#EDEDF9]" 
+              class="input-field" 
               placeholder="Enter your password"
               v-model="user.password" required 
               @input="touched.password = true"
@@ -100,15 +104,16 @@
           </p>
         </div>
 
-        <div class="mt-4 ">
-          <label for="confirm_password" class="text-sm font-medium text-gray-700">
-            Confirm Password <i class="ri-asterisk text-primary font-bold text-xs"></i>
+        <!-- Confirm Password -->
+        <div>
+          <label for="confirm_password" class="block text-sm font-medium text-gray-700">
+            Confirm Password <span class="text-primary font-bold">*</span>
           </label>
           <div class="relative">
             <input   
               :type="showRepeatPassword ? 'text' : 'password'" 
               id="confirm_password" 
-              class="input-field bg-[#EDEDF9]" 
+              class="input-field" 
               placeholder="Confirm your password"
               v-model="user.confirmPassword" required 
               @input="touched.confirmPassword = true"
@@ -124,8 +129,9 @@
             Passwords do not match.
           </p>
         </div>
-         <!-- Newsletter Subscription -->
-        <div class="mt-4 flex items-center">
+
+        <!-- Newsletter Subscription -->
+        <div class="flex items-center">
           <input 
             type="checkbox" 
             id="subscribe_newsletter" 
@@ -136,6 +142,8 @@
             Subscribe to our newsletter for updates and insights.
           </label>
         </div>
+
+        <!-- Submit Button -->
         <button 
           type="submit" 
           :disabled="!isFormValid"
@@ -148,11 +156,13 @@
         </button>
       </form>
 
+      <!-- Login Redirect -->
       <p class="text-sm mt-4 text-left text-primary">
-        Already have an Account?
+        Already have an account?
         <router-link to="/login" class="text-secondary font-semibold hover:underline">Sign In</router-link>
       </p>
 
+      <!-- Terms -->
       <p class="text-xs mt-4 text-left text-neutral">
         By creating an account, I confirm that I have read and understood the
         <a href="#" class="text-primary hover:underline">Privacy Policy</a> and
@@ -199,10 +209,17 @@ export default {
       return this.user.password.length >= 6;
     },
     emailError() {
-      return !this.user.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.user.email);
+      return !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.user.email);
     },
     isFormValid() {
-      return this.user.firstName && this.user.lastName && !this.emailError && this.user.password.length >= 6 && this.user.password === this.user.confirmPassword;
+      return this.user.firstName && this.user.lastName && !this.emailError && this.hasUppercase && this.hasNumber && this.hasSymbol && this.isLongEnough && this.user.password === this.user.confirmPassword;
+    }
+  },
+  methods: {
+    handleSubmit() {
+      if (this.isFormValid) {
+        this.$router.push("/bio");
+      }
     }
   }
 };
@@ -210,10 +227,6 @@ export default {
 
 <style scoped>
 .input-field {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  margin-top: 4px;
+  @apply w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary;
 }
 </style>

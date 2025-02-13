@@ -3,7 +3,15 @@
     class="min-h-screen px-6 py-12 transition-colors duration-300"
     :class="theme === 'dark' ? 'bg-gray-800 text-gray-300' : 'bg-gray-200 text-primary'"
   >
-    <div class="max-w-6xl mx-auto">
+    <nav class="fixed top-0 left-64 right-0 h-16 hidden lg:flex justify-between items-center px-6 shadow-md"
+      :class="theme === 'dark' ? 'bg-gray-900 text-gray-300' : 'bg-white text-black'">
+      <h1 class="text-xl font-semibold">Blogs</h1>
+      <router-link to="/bio" class="flex items-center space-x-4">
+        <img  class="h-10 w-10 rounded-full object-cover" alt="User Avatar" />
+        <span class="text-sm font-semibold">{{ "hii" }}</span>
+      </router-link>
+    </nav>
+    <div class="max-w-6xl mx-auto px-4 pt-20">
       <!-- Blog Hero Section -->
       <div class="text-center mb-12">
         <h1 class="text-5xl font-bold">

@@ -1,6 +1,14 @@
 <template>
-    <div class="min-h-screen bg-neutral text-primary px-6 py-12">
-      <div class="max-w-6xl mx-auto">
+    <div class="min-h-screen bg-gray-200 text-primary px-6 py-12">
+      <nav class="fixed top-0 left-64 right-0 h-16 hidden lg:flex justify-between items-center px-6 shadow-md"
+        :class="theme === 'dark' ? 'bg-gray-900 text-gray-300' : 'bg-white text-black'">
+        <h1 class="text-xl font-semibold">Careers</h1>
+        <router-link to="/bio" class="flex items-center space-x-4">
+          <img  class="h-10 w-10 rounded-full object-cover" alt="User Avatar" />
+          <span class="text-sm font-semibold">{{ "hii" }}</span>
+        </router-link>
+      </nav>
+      <div class="max-w-6xl mx-auto pt-20">
         <!-- Hero Section -->
         <div class="text-center mb-12">
           <h1 class="text-5xl font-bold text-primary">

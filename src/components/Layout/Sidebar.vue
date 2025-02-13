@@ -1,89 +1,96 @@
 <template>
-    <aside :class="{'bg-gray-900 text-white': isDarkMode, 'bg-white text-black': !isDarkMode}"
-           class="fixed left-0 top-0 h-screen w-64 p-5 flex flex-col shadow-md transition-all">
-      
-      <!-- Logo -->
-      <div class="mb-10 flex items-center space-x-2">
-        <img v-if="isDarkMode" src="../assets/images/darkLogo.png" class="h-10" alt="Logo">
-        <img v-else src="../assets/images/lightLogo.png" class="h-10" alt="Logo">
-        <span class="text-xl font-bold"></span>
-      </div>
-  
-      <!-- Sidebar Links -->
-      <nav class="flex-grow">
-       <router-link to="/dashboard" class="sidebar-link" :class="{'active': isActive('/dashboard')}">
-            <i class="ri-dashboard-line"></i> Dashboard
-        </router-link>
+  <aside 
+    :class="theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-black'"
+    class="fixed left-0 top-0 h-screen w-64 p-5 flex flex-col shadow-md transition-all border-r"
+  >
+    <!-- Logo & Theme Toggle -->
+    <div class="mb-10 flex items-center justify-between space-x-2">
+      <h1 class="text-3xl font-bold "
+      :class="theme === 'dark' ? 'text-white': 'text-primary'"
+      >
+        Dev<span 
+        :class="theme === 'dark' ? 'text-secondary': 'text-accent'">Pulse</span>
+      </h1>
+      <button 
+        @click="toggleTheme" 
+        class="px-2 rounded transition-colors duration-200"
+        :class="theme === 'dark' ? 'text-secondary'  : 'text-accent'"
+      >
+        <i v-if="theme === 'dark'" class="ri-sun-fill text-lg"></i>
+        <i v-else class="ri-moon-fill text-lg"></i>
+      </button>
+    </div>
 
-        <router-link to="/vulnerability" class="sidebar-link" :class="{'active': isActive('/vulnerability')}">
-            <i class="ri-file-text-line"></i> Vulnerability Reporting
-        </router-link>
-
-        <router-link to="/management" class="sidebar-link" :class="{'active': isActive('/management')}">
-            <i class="ri-file-list-3-line"></i> Report Management
-        </router-link>
-
-        <router-link to="/bounty" class="sidebar-link" :class="{'active': isActive('/bounty')}">
-            <i class="ri-wallet-line"></i> Bounty & Payment System
-        </router-link>
-
-        <router-link to="/community" class="sidebar-link" :class="{'active': isActive('/community')}">
-            <i class="ri-community-line"></i> Community
-        </router-link>
-
-        <router-link to="/analytics" class="sidebar-link" :class="{'active': isActive('/analytics')}">
-            <i class="ri-bar-chart-line"></i> Analytics & Reporting
-        </router-link>
-
-        <router-link to="/settings" class="sidebar-link" :class="{'active': isActive('/settings')}">
-          <i class="ri-settings-3-line"></i> Settings
-        </router-link>
-      </nav>
-  
-      <!-- Sign Out -->
-      <router-link to="/login" class="sidebar-link text-red-500">
-        <i class="ri-logout-box-line"></i> Sign Out
+    <!-- Sidebar Links -->
+    <nav class="flex-grow space-y-2">
+      <router-link 
+        v-for="link in links" 
+        :key="link.path"
+        :to="link.path" 
+        class="flex items-center px-4 py-3 text-lg font-medium rounded-lg transition duration-300"
+        :class="{
+          'bg-neutral dark:bg-gray-300': isActive(link.path), // Background for active links
+          'hover:bg-neutral': !isActive(link.path), // Hover effect
+          [theme === 'dark' ? 'text-secondary' : 'text-accent']: true, // Default text color
+          [isActive(link.path) ? (theme === 'dark' ? 'text-secondary' : 'text-accent') : '']: true // Active text color
+        }"
+      >
+        <i :class="link.icon" class="mr-3 text-xl"></i>
+        {{ link.label }}
       </router-link>
-    </aside>
-  </template>
-  
-  <script>
-  export default {
-    props: {
-      isDarkMode: Boolean,
-    },
-    methods: {
-      isActive(route) {
-        return this.$route.path === route;
-      }
+    </nav>
+
+
+
+    <!-- Sign Out -->
+    <router-link 
+      to="/login" 
+      class="flex items-center px-4 py-3 text-lg font-medium rounded-lg text-red-500 hover:text-red-100 dark:hover:text-red-900 transition duration-300"
+    >
+      <i class="ri-logout-box-line mr-3 text-xl"></i> Sign Out
+    </router-link>
+  </aside>
+</template>
+
+<script>
+import { useStore } from 'vuex';
+import store from '../../store';
+import { computed } from 'vue';
+
+export default {
+  props: {
+    theme: String,
+  },
+  setup(props, { emit }) {
+    const store = useStore();
+    const theme = computed(() => store.state.theme);
+
+    function toggleTheme() {
+      store.commit("toggleTheme");
+      document.documentElement.className = store.state.theme;
     }
-  };
-  </script>
-  
-  <style scoped>
-  .sidebar-link {
-    display: flex;
-    align-items: center;
-    padding: 12px;
-    font-size: 1rem;
-    font-weight: 500;
-    border-radius: 8px;
-    transition: all 0.3s;
+
+    return { theme, toggleTheme };
+  },
+  data() {
+    return {
+      links: [
+        { path: "/dashboard", label: "Dashboard", icon: "ri-dashboard-line" },
+        { path: "/services", label: "Services", icon: "ri-service-fill" },
+        { path: "/careers", label: "Career", icon: "ri-id-card-fill" },
+        { path: "/resources", label: "Resources", icon: "ri-database-line" },
+        { path: "/blogs", label: "Blogs", icon: "ri-news-line" },
+      ]
+    };
+  },
+  methods: {
+    isActive(route) {
+      return this.$route.path === route;
+    },
+    toggleTheme(){
+      store.commit("toggleTheme");
+      document.documentElement.className = store.state.theme;
+    }
   }
-  
-  .sidebar-link i {
-    margin-right: 10px;
-    font-size: 1.2rem;
-  }
-  
-  .sidebar-link:hover, .sidebar-link.active {
-    background-color: rgba(59, 130, 246, 0.1);
-    color: #3b82f6;
-  }
-  
-  .dark .sidebar-link.active {
-    background-color: rgba(250, 204, 21, 0.2);
-    color: #facc15;
-  }
-  </style>
-  
+};
+</script>

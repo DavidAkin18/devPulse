@@ -1,5 +1,4 @@
 <template>
-  <Navbar :homePage="homePage" :theme="theme" @toggle-theme="toggleTheme"/>
   <div 
     class="min-h-screen px-6 py-12 pt-32 transition-colors duration-300"
     :class="theme === 'dark' ? 'bg-gray-800 text-gray-300' : 'bg-gradient-to-b from-primary to-neutral text-white'"
@@ -92,7 +91,6 @@
       </section>
     </div>
   </div>
-  <Footer :theme="theme"/>
 </template>
 
 <script>
@@ -102,8 +100,7 @@ import Footer from "../../Layout/Footer.vue";
 export default {
   name: "About",
   components: {
-    Navbar,
-    Footer
+   
   },
   data() {
     return {

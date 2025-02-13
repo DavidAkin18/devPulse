@@ -7,6 +7,8 @@ export default createStore({
       lastName: '',
       profilePicture: '', // This will hold the image URL
     },
+    theme: localStorage.getItem('theme') || 'light', // Load from storage
+
   },
   mutations: {
     setProfile(state, payload) {
@@ -14,6 +16,10 @@ export default createStore({
     },
     setProfilePicture(state, profilePicture) {
       state.profile.profilePicture = profilePicture;
+    },
+    toggleTheme(state) {
+      state.theme = state.theme === 'light' ? 'dark' : 'light';
+      localStorage.setItem('theme', state.theme); // Save to storage
     },
   },
   actions: {
