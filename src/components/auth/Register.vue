@@ -3,11 +3,14 @@
     <div class="py-12 px-6 pt-10 rounded-lg space-y-6 w-full max-w-xl ">
       <!-- Header -->
       <div class="text-left">
-        <h2 class="text-3xl font-extrabold text-primary">DevPulse</h2>
+        <img 
+          src="https://res.cloudinary.com/def9quyti/image/upload/v1740134713/DevPulse_Logo_color2_gnhfag.png" 
+          alt="logo" class="h-12"
+        >
       </div>
       <div class="text-left">
         <h2 class="text-xl font-bold tracking-wider">Create an account</h2>
-        <p class="text-neutral mt-2">Fill in the following information to get started</p>
+        <p class="text-secondary mt-2">Fill in the following information to get started</p>
       </div>
 
       <!-- Form -->
@@ -148,7 +151,7 @@
           type="submit" 
           :disabled="!isFormValid"
           :class="{
-            'bg-secondary text-white hover:bg-accent': isFormValid, 
+            'bg-accent text-white hover:bg-green-700': isFormValid, 
             'bg-gray-300 text-gray-600 cursor-not-allowed': !isFormValid
           }"
           class="mt-6 w-full py-2 rounded-md font-semibold transition">

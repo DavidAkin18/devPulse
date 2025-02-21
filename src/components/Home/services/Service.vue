@@ -1,17 +1,11 @@
 <template>
+  <Navbar :theme="theme" @toggle-theme="toggleTheme"/>
   <div 
-    class="min-h-screen px-6 py-12 transition-colors duration-300"
+    class="min-h-screen px-6 py-12 transition-colors duration-300 pt-28"
     :class="theme === 'dark' ? 'bg-gray-800 text-gray-200' : 'bg-gray-100 text-primary'"
   >
-  <nav class="fixed top-0 left-64 z-50 right-0 h-16 hidden lg:flex justify-between items-center px-6 shadow-md"
-      :class="theme === 'dark' ? 'bg-gray-900 text-gray-300' : 'bg-white text-black'">
-      <h1 class="text-xl font-semibold">Comprehensive Services</h1>
-      <router-link to="/bio" class="flex items-center space-x-4">
-        <img  class="h-10 w-10 rounded-full object-cover" alt="User Avatar" />
-        <span class="text-sm font-semibold">{{ "hii" }}</span>
-      </router-link>
-    </nav>
-    <div class="max-w-6xl mx-auto pt-20">
+
+    <div class="max-w-6xl mx-auto pt-5">
       <!-- Hero Section -->
       <div class="text-center mb-12">
         <h1 class="text-5xl font-bold">
@@ -52,33 +46,34 @@
         </div>
       </section>
 
-      <!-- Link to Comprehensive Service Offerings -->
-      <div class="text-center mt-12">
-        <router-link to="/services/comprehensive-services">
-          <button 
-            class="px-6 py-3 rounded-lg shadow-md text-lg font-semibold transition"
-            :class="theme === 'dark' ? 'bg-gray-900 text-gray-200 hover:bg-gray-500' : 'bg-secondary text-white hover:bg-opacity-80'"
-          >
-            View Comprehensive Offerings
-          </button>
-        </router-link>
-      </div>
       
+      <ComprehensiveService :theme="theme"/>
     </div>
+   
   </div>
+  <Footer :theme="theme"/>
 </template>
 
 <script>
 import { RouterView } from 'vue-router';
+import ComprehensiveService from './ComprehensiveService.vue';
+import Navbar from '../../Layout/Navbar.vue';
+import Footer from '../../Layout/Footer.vue';
 
 export default {
   name: "Services",
+  components:{
+    ComprehensiveService,
+    Navbar, 
+    Footer
+  },
   props: {
     theme: {
       type: String,
       required: true
     }
   },
+  
   data() {
     return {
       services: [
@@ -120,6 +115,11 @@ export default {
           ]
         }
       ]
+    }
+  },
+  methods: {
+    toggleTheme() {
+      this.$emit('toggle-theme');
     }
   }
 };

@@ -37,7 +37,7 @@ export default {
     const theme = computed(() => store.state.theme);
 
     // Authentication routes (hide sidebar & mobile sidebar here)
-    const authPaths = ["/", "/register", "/login", "/forgot-password", "/about", "/bio"];
+    const authPaths = ["/", "/register", "/login", "/forgot-password", "/about", '/services', '/services/comprehensive-services'];
     const isAuthPage = computed(() => authPaths.includes(route.path));
 
     // Handle screen resize

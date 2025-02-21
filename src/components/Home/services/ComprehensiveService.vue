@@ -1,15 +1,11 @@
 <template>
   
-  <div :class="theme === 'dark' ? 'bg-gray-900 text-gray-200' : 'bg-gray-100 text-primary'" class="min-h-screen pt-32 px-6 py-12">
-    <nav class="fixed top-0 left-64 z-50 right-0 h-16 hidden lg:flex justify-between items-center px-6 shadow-md"
-      :class="theme === 'dark' ? 'bg-gray-900 text-gray-300' : 'bg-white text-black'">
-      <h1 class="text-xl font-semibold">Comprehensive Services</h1>
-      <router-link to="/bio" class="flex items-center space-x-4">
-        <img  class="h-10 w-10 rounded-full object-cover" alt="User Avatar" />
-        <span class="text-sm font-semibold">{{ "hii" }}</span>
-      </router-link>
-    </nav>
-    <div class="max-w-4xl mx-auto pt-20">
+  <div 
+    :class="theme === 'dark' ? 'bg-gray-900 text-gray-200' : 'bg-gray-100 text-primary'" 
+    class="min-h-screen pt-32  py-12"
+  >
+
+    <div>
       <!-- Hero Section -->
       <div class="text-center mb-12">
         <h1 class="text-4xl md:text-5xl font-bold">

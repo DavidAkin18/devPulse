@@ -1,12 +1,19 @@
 <template>
     <div class="mx-auto py-12 px-6 max-w-lg">
-      <h2 class="text-primary text-2xl font-bold text-center">
+
+      <div class="text-left">
+          <img 
+          src="https://res.cloudinary.com/def9quyti/image/upload/v1740134713/DevPulse_Logo_color2_gnhfag.png" 
+          alt="logo" class="h-12"
+        >        
+      </div>
+      <h2 class="text-primary text-2xl font-bold pt-4 text-left">
         Reset your password
       </h2>
-      <div class="register-form mt-6 bg-white p-6 rounded-lg">
+      <div class="register-form mt-6 bg-white py-6 rounded-lg">
         <form @submit.prevent="initiatePasswordReset" class="space-y-6">
           <div>
-            <label class="block text-neutral font-medium mb-2">Email Address</label>
+            <label class="block text-secondary font-medium mb-2">Email Address</label>
             <input
               type="email"
               placeholder="Enter your email"

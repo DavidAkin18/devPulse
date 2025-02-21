@@ -8,6 +8,7 @@ export default {
         accent: "#27AE60",
         neutral: "#BDC3C7",
         secondary: "#00BFFF",
+        white:'#ffffff'
       },
     },
   },

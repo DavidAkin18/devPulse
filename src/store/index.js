@@ -5,21 +5,25 @@ export default createStore({
     profile: {
       firstName: '',
       lastName: '',
-      profilePicture: '', // This will hold the image URL
+      nickName: '',
+      email: '',
+      gender: '',
+      country: '',
+      language: '',
+      profilePicture: '',
     },
-    theme: localStorage.getItem('theme') || 'light', // Load from storage
-
+    theme: localStorage.getItem('theme') || 'light',
   },
   mutations: {
     setProfile(state, payload) {
-      state.profile = payload;
+      state.profile = { ...state.profile, ...payload };
     },
     setProfilePicture(state, profilePicture) {
       state.profile.profilePicture = profilePicture;
     },
     toggleTheme(state) {
       state.theme = state.theme === 'light' ? 'dark' : 'light';
-      localStorage.setItem('theme', state.theme); // Save to storage
+      localStorage.setItem('theme', state.theme);
     },
   },
   actions: {
@@ -31,14 +35,8 @@ export default createStore({
     },
   },
   getters: {
-    getProfile(state) {
-      return state.profile;
-    },
-    getProfilePicture(state) {
-      return state.profile.profilePicture;
-    },
-    getFullName(state) {
-      return `${state.profile.firstName} ${state.profile.lastName}`;
-    },
+    getProfile: (state) => state.profile,
+    getFullName: (state) => `${state.profile.firstName} ${state.profile.lastName}`.trim(),
+    getProfilePicture: (state) => state.profile.profilePicture,
   },
 });

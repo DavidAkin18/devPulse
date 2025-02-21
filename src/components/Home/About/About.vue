@@ -1,13 +1,14 @@
 <template>
+  <Navbar :theme="theme" @toggle-theme="toggleTheme"/>
   <div 
     class="min-h-screen px-6 py-12 pt-32 transition-colors duration-300"
-    :class="theme === 'dark' ? 'bg-gray-800 text-gray-300' : 'bg-gradient-to-b from-primary to-neutral text-white'"
+    :class="theme === 'dark' ? 'bg-gray-800 text-gray-200' : 'bg-white text-secondary'"
   >
     <div class="max-w-6xl mx-auto">
       <!-- Hero Section -->
       <div class="text-center mb-16">
         <h1 class="text-5xl font-extrabold">
-          About <span class="bg-gradient-to-r from-accent to-secondary text-transparent bg-clip-text">DevPulse</span>
+          About <span class="text-accent">DevPulse</span>
         </h1>
         <p class="text-lg mt-4" :class="theme === 'dark' ? 'text-gray-400' : 'text-neutral'">
           Empowering businesses with cutting-edge web and mobile solutions.
@@ -16,13 +17,15 @@
 
       <!-- Mission & Vision -->
       <section class="mb-12 flex flex-wrap justify-center gap-8">
-        <div class="glass-card w-full md:w-5/12" :class="theme === 'dark' ? 'bg-gray-700 border-gray-600' : ''">
+        <div class="glass-card w-full md:w-5/12 shadow-lg border border-neutral"
+          :class="theme === 'dark' ? 'bg-gray-700 text-gray-300' : 'bg-white text-secondary'">
           <h2 class="text-3xl font-bold">Our Mission</h2>
           <p class="text-lg mt-2">
             We build innovative, scalable, and efficient digital solutions that help businesses thrive in a competitive world.
           </p>
         </div>
-        <div class="glass-card w-full md:w-5/12" :class="theme === 'dark' ? 'bg-gray-700 border-gray-600' : ''">
+        <div class="glass-card w-full md:w-5/12 shadow-lg border border-neutral"
+          :class="theme === 'dark' ? 'bg-gray-700 text-gray-300' : 'bg-white text-secondary'">
           <h2 class="text-3xl font-bold">Our Vision</h2>
           <p class="text-lg mt-2">
             To be a global leader in technology solutions, fostering innovation and digital transformation worldwide.
@@ -34,15 +37,18 @@
       <section class="mb-12">
         <h2 class="text-3xl font-semibold text-center">Core Values</h2>
         <div class="grid md:grid-cols-3 gap-8 mt-6">
-          <div class="glass-card" :class="theme === 'dark' ? 'bg-gray-700 border-gray-600' : ''">
+          <div class="glass-card shadow-lg border border-neutral"
+            :class="theme === 'dark' ? 'bg-gray-700 text-gray-300' : 'bg-white text-secondary'">
             <h3 class="text-xl font-bold">🚀 Innovation</h3>
             <p>We explore new technologies to deliver the best solutions.</p>
           </div>
-          <div class="glass-card" :class="theme === 'dark' ? 'bg-gray-700 border-gray-600' : ''">
+          <div class="glass-card shadow-lg border border-neutral"
+            :class="theme === 'dark' ? 'bg-gray-700 text-gray-300' : 'bg-white text-secondary'">
             <h3 class="text-xl font-bold">🤝 Integrity</h3>
             <p>We operate with transparency and honesty in all our dealings.</p>
           </div>
-          <div class="glass-card" :class="theme === 'dark' ? 'bg-gray-700 border-gray-600' : ''">
+          <div class="glass-card shadow-lg border border-neutral"
+            :class="theme === 'dark' ? 'bg-gray-700 text-gray-300' : 'bg-white text-secondary'">
             <h3 class="text-xl font-bold">💡 Customer-Centric</h3>
             <p>Our clients' success is our top priority.</p>
           </div>
@@ -53,20 +59,23 @@
       <section class="mb-12">
         <h2 class="text-3xl font-semibold text-center">Meet Our Team</h2>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
-          <div class="team-card" :class="theme === 'dark' ? 'bg-gray-700' : ''">
+          <div class="team-card shadow-lg border border-neutral"
+            :class="theme === 'dark' ? 'bg-gray-700 text-gray-300' : 'bg-white text-secondary'">
             <img src="" alt="CEO" class="team-img">
             <h3 class="text-xl font-bold">John Doe</h3>
-            <p :class="theme === 'dark' ? 'text-gray-400' : 'text-neutral'">CEO & Founder</p>
+            <p class="text-neutral">CEO & Founder</p>
           </div>
-          <div class="team-card" :class="theme === 'dark' ? 'bg-gray-700' : ''">
+          <div class="team-card shadow-lg border border-neutral"
+            :class="theme === 'dark' ? 'bg-gray-700 text-gray-300' : 'bg-white text-secondary'">
             <img src="" alt="CTO" class="team-img">
             <h3 class="text-xl font-bold">Jane Smith</h3>
-            <p :class="theme === 'dark' ? 'text-gray-400' : 'text-neutral'">Chief Technology Officer</p>
+            <p class="text-neutral">Chief Technology Officer</p>
           </div>
-          <div class="team-card" :class="theme === 'dark' ? 'bg-gray-700' : ''">
+          <div class="team-card shadow-lg border border-neutral"
+            :class="theme === 'dark' ? 'bg-gray-700 text-gray-300' : 'bg-white text-secondary'">
             <img src="" alt="COO" class="team-img">
             <h3 class="text-xl font-bold">Michael Lee</h3>
-            <p :class="theme === 'dark' ? 'text-gray-400' : 'text-neutral'">Chief Operating Officer</p>
+            <p class="text-neutral">Chief Operating Officer</p>
           </div>
         </div>
       </section>
@@ -75,15 +84,18 @@
       <section>
         <h2 class="text-3xl font-semibold text-center">Our Journey</h2>
         <div class="timeline mt-6">
-          <div class="timeline-item" :class="theme === 'dark' ? 'bg-gray-700 border-accent' : ''">
+          <div class="timeline-item shadow-lg border-l-4 border-accent"
+            :class="theme === 'dark' ? 'bg-gray-700 text-gray-300' : 'bg-white text-secondary'">
             <h3 class="text-xl font-bold">2018 - Founded</h3>
             <p>DevPulse was founded to create next-gen web solutions.</p>
           </div>
-          <div class="timeline-item" :class="theme === 'dark' ? 'bg-gray-700 border-accent' : ''">
+          <div class="timeline-item shadow-lg border-l-4 border-accent"
+            :class="theme === 'dark' ? 'bg-gray-700 text-gray-300' : 'bg-white text-secondary'">
             <h3 class="text-xl font-bold">2020 - Major Milestone</h3>
             <p>Expanded globally and served over 100 clients.</p>
           </div>
-          <div class="timeline-item" :class="theme === 'dark' ? 'bg-gray-700 border-accent' : ''">
+          <div class="timeline-item shadow-lg border-l-4 border-accent"
+            :class="theme === 'dark' ? 'bg-gray-700 text-gray-300' : 'bg-white text-secondary'">
             <h3 class="text-xl font-bold">2023 - Innovation & Growth</h3>
             <p>Launched AI-powered solutions for business automation.</p>
           </div>
@@ -91,6 +103,7 @@
       </section>
     </div>
   </div>
+  <Footer :theme="theme"/>
 </template>
 
 <script>
@@ -100,13 +113,13 @@ import Footer from "../../Layout/Footer.vue";
 export default {
   name: "About",
   components: {
-   
+    Navbar,Footer
   },
-  data() {
-    return {
-      homePage: 'Home'
-    };
-  },
+  // data() {
+  //   return {
+  //     homePage: 'Home'
+  //   };
+  // },
   props: {
     theme: {
       type: String,

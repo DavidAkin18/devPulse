@@ -2,7 +2,10 @@
     <div class="flex min-h-screen items-center justify-center bg-white">
       <div class="py-12 p-4 pt-10 rounded-lg space-y-6 w-full max-w-md">
         <div class="text-left">
-          <h2 class="text-3xl font-extrabold text-primary">DevPulse</h2>
+            <img 
+            src="https://res.cloudinary.com/def9quyti/image/upload/v1740134713/DevPulse_Logo_color2_gnhfag.png" 
+            alt="logo" class="h-12"
+          >        
         </div>
   
         <h2 class="text-xl font-bold tracking-wider">Sign in</h2>
@@ -59,7 +62,7 @@
             type="submit"
             :disabled="disableButton"
             :class="{
-              'bg-secondary text-white hover:bg-accent': !disableButton, 
+              'bg-accent text-white hover:bg-green-700': !disableButton, 
               'bg-gray-300 text-gray-600 cursor-not-allowed': disableButton
             }"
             class="mt-6 w-full py-2 rounded-md font-semibold transition"

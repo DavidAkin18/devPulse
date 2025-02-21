@@ -17,12 +17,12 @@
 
     <!-- Hero Content -->
     <div class="relative z-10 max-w-3xl">
-      <h1 class="text-5xl sm:text-6xl font-extrabold tracking-wide">
+      <h1 class="text-5xl text-accent sm:text-6xl font-extrabold tracking-wide">
         Welcome to <span class="text-secondary">DevPulse</span>
       </h1>
 
       <!-- Overview -->
-      <p class="text-lg sm:text-xl mt-4 space-x-4">
+      <p class="text-lg text-white sm:text-xl mt-4 space-x-4">
         DevPulse provides cutting-edge web and mobile solutions designed
         <span class="text-accent text-xl font-extrabold transition-all">{{ currentCountry }}</span>
       </p>

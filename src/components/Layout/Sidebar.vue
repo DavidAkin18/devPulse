@@ -5,12 +5,15 @@
   >
     <!-- Logo & Theme Toggle -->
     <div class="mb-10 flex items-center justify-between space-x-2">
-      <h1 class="text-3xl font-bold "
-      :class="theme === 'dark' ? 'text-white': 'text-primary'"
-      >
-        Dev<span 
-        :class="theme === 'dark' ? 'text-secondary': 'text-accent'">Pulse</span>
-      </h1>
+      <img v-if="theme === 'dark'" src="https://res.cloudinary.com/def9quyti/image/upload/v1740134728/DevPulse_Logo_Mono-white_1_vrq3gj.png" 
+          class="h-10"
+          alt="light-mode-logo"
+        >
+      <img src="https://res.cloudinary.com/def9quyti/image/upload/v1740134713/DevPulse_Logo_color2_gnhfag.png" 
+        alt="dark-mode-logo" v-else
+        class="h-10" >
+
+       
       <button 
         @click="toggleTheme" 
         class="px-2 rounded transition-colors duration-200"
@@ -29,10 +32,10 @@
         :to="link.path" 
         class="flex items-center px-4 py-3 text-lg font-medium rounded-lg transition duration-300"
         :class="{
-          'bg-neutral dark:bg-gray-300': isActive(link.path), // Background for active links
-          'hover:bg-neutral': !isActive(link.path), // Hover effect
-          [theme === 'dark' ? 'text-secondary' : 'text-accent']: true, // Default text color
-          [isActive(link.path) ? (theme === 'dark' ? 'text-secondary' : 'text-accent') : '']: true // Active text color
+          'bg-accent text-white': isActive(link.path) && theme !== 'dark', // Light mode: active bg accent, text white
+          'text-accent': !isActive(link.path) && theme !== 'dark', // Light mode: inactive text accent
+          'bg-accent dark:bg-secondary text-white': isActive(link.path) && theme === 'dark', // Dark mode: active bg secondary, text white
+          'hover:bg-neutral': !isActive(link.path), // Hover effect for all themes
         }"
       >
         <i :class="link.icon" class="mr-3 text-xl"></i>
@@ -76,10 +79,10 @@ export default {
     return {
       links: [
         { path: "/dashboard", label: "Dashboard", icon: "ri-dashboard-line" },
-        { path: "/services", label: "Services", icon: "ri-service-fill" },
+        // { path: "/services", label: "Services", icon: "ri-service-fill" },
         { path: "/careers", label: "Career", icon: "ri-id-card-fill" },
         { path: "/resources", label: "Resources", icon: "ri-database-line" },
-        { path: "/blogs", label: "Blogs", icon: "ri-news-line" },
+        { path: "/bio", label: "Profile", icon: "ri-settings-line" },
       ]
     };
   },

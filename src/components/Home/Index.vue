@@ -1,10 +1,10 @@
 <template>
     <div>
         <Hero :theme="theme"/>
-        <About/>
+        <!-- <About/> -->
         <!-- <Service :theme="theme"/> -->
         <CaseStudy :theme="theme"/>
-        <!-- <Blogs :theme="theme"/> -->
+        <Blogs :theme="theme"/>
         <!-- <Resources :theme="theme" /> -->
         <FAQ :theme="theme"/>
         <Testimonials :theme="theme" />

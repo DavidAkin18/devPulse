@@ -7,8 +7,16 @@
     <div class="xl:max-w-6xl lg:max-w-4xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- Company Info -->
       <div>
-        <h2 class="text-xl font-bold mb-4">DevPulse</h2>
-        <p :class="theme === 'dark' ? 'text-gray-400' : 'text-neutral'">
+        <!-- Logo -->
+        <img src="https://res.cloudinary.com/def9quyti/image/upload/v1740134713/DevPulse_Logo_color2_gnhfag.png" 
+        alt="dark-mode-logo" v-if="theme === 'dark'"
+        class="h-10" >
+
+        <img v-else src="https://res.cloudinary.com/def9quyti/image/upload/v1740139430/DevPulse_Logo_Mono-black_1_h92f3x.png" 
+          class="h-10"
+          alt="light-mode-logo"
+        >
+        <p :class="theme === 'dark' ? 'text-gray-400' : 'text-gray-500'">
           Innovative technology solutions tailored for businesses.
         </p>
       </div>
@@ -20,8 +28,8 @@
           <li><router-link to="/" class="transition-colors hover:text-secondary">Home</router-link></li>
           <li><router-link to="/about" class="transition-colors hover:text-secondary">About Us</router-link></li>
           <li><router-link to="/services" class="transition-colors hover:text-secondary">Services</router-link></li>
-          <li><router-link to="/blog" class="transition-colors hover:text-secondary">Blog</router-link></li>
-          <li><router-link to="/contact" class="transition-colors hover:text-secondary">Contact Us</router-link></li>
+          <li><router-link to="/" class="transition-colors hover:text-secondary">Blog</router-link></li>
+          <li><router-link to="/#" class="transition-colors hover:text-secondary">Contact Us</router-link></li>
           <li><router-link to="/careers" class="transition-colors hover:text-secondary">Careers</router-link></li>
         </ul>
       </div>
@@ -53,8 +61,8 @@
     <div class="text-center text-sm mt-6">
       <p :class="theme === 'dark' ? 'text-gray-500' : 'text-gray-600'">
         &copy; 2024 DevPulse. All rights reserved. | 
-        <router-link to="/privacy" class="hover:text-secondary">Privacy Policy</router-link> | 
-        <router-link to="/terms" class="hover:text-secondary">Terms of Service</router-link>
+        <router-link to="/" class="hover:text-secondary">Privacy Policy</router-link> | 
+        <router-link to="/" class="hover:text-secondary">Terms of Service</router-link>
       </p>
     </div>
   </footer>
